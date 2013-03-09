@@ -27,7 +27,7 @@ rm /home/vagrant/VBoxGuestAdditions_$VBOX_VERSION.iso
 # Setup sudo to allow no-password sudo for "sudo"
 usermod -a -G sudo vagrant
 cp /etc/sudoers /etc/sudoers.orig
-sed -i -e 's/%sudo	ALL=(ALL:ALL) ALL/%sudo\tALL=(ALL:ALL) NOPASSWD:ALL/' /etc/sudoers
+sed -i -e 's/%sudo\tALL=(ALL:ALL) ALL/%sudo\tALL=(ALL:ALL) NOPASSWD:ALL/' /etc/sudoers
 
 # Add puppet user and group
 adduser --system --group --home /var/lib/puppet puppet
@@ -72,9 +72,18 @@ wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/key
 chmod 600 /home/vagrant/.ssh/authorized_keys
 chown -R vagrant /home/vagrant/.ssh
 
+# Install Ubuntu desktop stuff - installation of ubuntu-desktop needs to be
+# done here, instead of in preeseed.cfg, because the packages aren't available
+# (over the network) at that stage.
+echo "installing ubuntu-desktop"
+tasksel install ubuntu-desktop
+
 # Remove items used for building, since they aren't needed anymore
 apt-get -y remove linux-headers-$(uname -r) build-essential
 apt-get -y autoremove
+
+# Remove downloaded packages
+apt-get clean
 
 # Zero out the free space to save space in the final image:
 dd if=/dev/zero of=/EMPTY bs=1M
