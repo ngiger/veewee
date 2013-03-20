@@ -19,4 +19,5 @@ group :test do
   #gem "chef"
   #gem "knife-windows"
 end
+gem "vagrant-hiera"
 gemspec
