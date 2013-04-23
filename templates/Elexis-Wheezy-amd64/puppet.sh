@@ -10,7 +10,10 @@ fi
 adduser --system --group --home /var/lib/puppet puppet
 
 # Installing Puppet and hiera-pgpg
+apt-get build-dep puppet --assume-yes --no-install-recommends 
+if [ $? -ne 0 ] ; then exit 1; fi
 gem install puppet hiera-gpg --no-ri --no-rdoc
+if [ $? -ne 0 ] ; then exit 1; fi
 
 if [ -z "$PUPPET_VERSION" ]; then
   # Default to latest
@@ -18,3 +21,4 @@ if [ -z "$PUPPET_VERSION" ]; then
 else
   gem install puppet --no-ri --no-rdoc --version $PUPPET_VERSION
 fi
+if [ $? -ne 0 ] ; then exit 1; fi
