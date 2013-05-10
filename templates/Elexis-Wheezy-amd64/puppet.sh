@@ -1,6 +1,3 @@
-# To update the path to get access the newly installed rvm/gem/ruby we need to source /etc/profile
-source /etc/profile
-
 if [ -f .veewee_params ]
 then
   . .veewee_params

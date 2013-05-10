@@ -30,10 +30,10 @@ exit unless system("bundle install")
 #puts "We always edit the templates file, not the definition"
 puts "if anything goes wrong. You might try to login using 
 #  ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 7222 -l vagrant 127.0.0.1"
-exit unless system("vagrant basebox define #{buildTarget} #{name} --force")
-exit unless system("vagrant basebox build #{buildTarget} --force")
-exit unless system("vagrant basebox export #{buildTarget} --force")
-exit unless system("vagrant box add #{name} #{name}-#{buildTarget}.box --force")
+exit unless system("veewee vbox define #{buildTarget} #{name} --force")
+exit unless system("veewee vbox build #{buildTarget} --force")
+exit unless system("veewee vbox export #{buildTarget} --force")
+exit unless system("veewee vbox box add #{buildTarget} #{File.expand_path(buildTarget)}.box --force")
 if 0
   exit unless system("vagrant init #{buildTarget}")
   exit unless system("vagrant up")
