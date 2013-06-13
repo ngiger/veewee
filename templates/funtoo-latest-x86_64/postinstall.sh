@@ -130,6 +130,13 @@ chroot "$chroot" emerge --sync
 # set localtime
 chroot "$chroot" ln -sf "/usr/share/zoneinfo/$timezone" /etc/localtime
 
+cat <<DATAEOF >> "$chroot/etc/conf.d/net"
+# This blank configuration will automatically use DHCP for any net.*
+# scripts in /etc/init.d.  To create a more complete configuration,
+# please review /usr/share/doc/openrc-*/net.example.bz2 and save
+# your configuration in /etc/conf.d/net (this file :]!).
+DATAEOF
+
 # get, configure, compile and install the kernel and modules
 chroot "$chroot" /bin/bash <<DATAEOF
 emerge sys-kernel/gentoo-sources sys-kernel/genkernel sys-boot/boot-update
