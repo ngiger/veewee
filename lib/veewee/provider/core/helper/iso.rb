@@ -150,6 +150,7 @@ module Veewee
                   ui.info "curl -C - -L '#{self.iso_src}' -o '#{full_path}'"
                   ui.info "md5 '#{full_path}' " if self.iso_md5
                   ui.info "shasum '#{full_path}' " if self.iso_sha1
+                  ui.info "shasum -a 256 '#{rel_path}' " if self.iso_sha256
                   ui.info ""
                   exit
                 end
