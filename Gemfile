@@ -26,4 +26,3 @@ group :test do
 end
 
 gemspec
-gem "ruby-libvirt"
