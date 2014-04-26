@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   # DEBUG_RESOLVER=1 bundle install
   s.add_dependency "net-ssh", ">= 2.2.0"
 
+  s.add_dependency "mime-types", "~> 1.16"
   s.add_dependency "popen4", "~> 0.1.2"
   s.add_dependency "thor", "~> 0.15"
   s.add_dependency "highline"
@@ -34,7 +35,9 @@ Gem::Specification.new do |s|
   s.add_dependency "childprocess"
   s.add_dependency "grit"
   s.add_dependency "fission", "0.4.0"
-  s.add_dependency "whichr"
+  s.add_dependency "os", "~> 0.9.6"
+
+  s.required_ruby_version = '>= 1.9.2'
 
   # Modified dependency version, as libxml-ruby dependency has been removed in version 2.1.1
   # See : https://github.com/ckruse/CFPropertyList/issues/14
