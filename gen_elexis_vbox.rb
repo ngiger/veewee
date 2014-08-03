@@ -5,7 +5,7 @@
 #
 require 'fileutils'
 name = ARGV[0]
-name = 'Elexis-Wheezy-amd64' unless name
+name = 'Elexis-Trusty-amd64' unless name
 buildTarget = "#{name}-#{Time.now.strftime('%Y%m%d')}"
 def system(cmd)
   logName = cmd.split(' ')[2]
@@ -26,7 +26,7 @@ end
 FileUtils.rm_f('Vagrantfile', :verbose => true)
 # FileUtils.rm_f('*.box', :verbose => true)
 
-exit unless system("bundle install")
+exit unless system("bundle install --without kvm")
 #puts "We always edit the templates file, not the definition"
 puts "if anything goes wrong. You might try to login using 
 #  ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 7222 -l vagrant 127.0.0.1"

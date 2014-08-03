@@ -19,8 +19,7 @@ end
 
 group :test do
   gem "rake"
-  gem "vagrant", github: "mitchellh/vagrant", tag: "v1.2.2"
-  # gem "vagrant" , "1.0.7"
+  #gem "vagrant" , "1.0.7"
   #gem "chef"
   #gem "knife-windows"
 end
